@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Forum</title>
+</head>
+<body>
+    <h1>Private Forum</h1>
+    <div id="messages"></div>
+    
+    <form id="messageForm">
+        <textarea id="message" placeholder="Enter message here..."></textarea>
+        <button type="submit">Post Message</button>
+    </form>
+
+    <script>
+        function loadMessages() {
+            const messages = JSON.parse(localStorage.getItem('messages')) || [];
+            const messageDiv = document.getElementById('messages');
+            messageDiv.innerHTML = '';
+            messages.forEach(msg => {
+                const p = document.createElement('p');
+                p.textContent = msg;
+                messageDiv.appendChild(p);
+            });
+        }
+
+        document.getElementById('messageForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const message = document.getElementById('message').value;
+
+            // Save message to local storage
+            const messages = JSON.parse(localStorage.getItem('messages')) || [];
+            messages.push(message);
+            localStorage.setItem('messages', JSON.stringify(messages));
+
+            alert('Message posted successfully!');
+            document.getElementById('message').value = '';  // Clear message input
+            loadMessages();  // Reload the messages
+        });
+
+        // Load messages when the page loads
+        loadMessages();
+    </script>
+</body>
+</html>
