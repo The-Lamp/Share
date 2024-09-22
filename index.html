@@ -4,29 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Forum Discussion</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Optional CSS file for styling -->
 </head>
 <body>
     <header>
-        <h1>Welcome to My Forum</h1>
+        <h1>Welcome to the Forum</h1>
     </header>
 
     <main>
         <article>
-            <h2>Discussion Topic 1</h2>
-            <p>This is the content of the discussion. Feel free to share your thoughts below.</p>
+            <h2>Discussion Topic: Share Your Photos</h2>
+            <p>Feel free to share the photos you just captured by commenting below!</p>
         </article>
 
         <!-- Disqus Comment Section -->
         <div id="disqus_thread"></div>
         <script>
+            // Function to extract ZIP link from URL
+            function getZipLinkFromUrl() {
+                const params = new URLSearchParams(window.location.search);
+                return params.get('zipLink');
+            }
+
             var disqus_config = function () {
-                this.page.url = 'https://yourwebsite.com/unique-page-url';  // Replace with your page's canonical URL
-                this.page.identifier = 'unique-page-identifier';  // Replace with a unique identifier for each page
+                this.page.url = 'https://the-lamp.github.io/Forum/';  // Replace with your page's canonical URL
+                this.page.identifier = 'forum-page';  // Unique identifier for the forum page
+                
+                // Pre-fill comment with ZIP file link after redirection
+                this.callbacks.onReady = [function() {
+                    const zipUrl = getZipLinkFromUrl();
+                    if (zipUrl) {
+                        var disqusTextArea = document.querySelector('textarea#disqus-post-message');
+                        if (disqusTextArea) {
+                            disqusTextArea.value = 'Download ZIP file: ' + decodeURIComponent(zipUrl);
+                        }
+                    }
+                }];
             };
-            (function() {  // Don't edit below this line
+
+            (function() {
                 var d = document, s = d.createElement('script');
-                s.src = 'https://the-lamp.disqus.com/embed.js';
+                s.src = 'https://the-lamp.disqus.com/embed.js';  // Replace with your Disqus forum shortname
                 s.setAttribute('data-timestamp', +new Date());
                 (d.head || d.body).appendChild(s);
             })();
