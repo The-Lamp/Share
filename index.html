@@ -1,414 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>  
-   
+<head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Create an Online Friendship Quiz, Send it to your Friends, Let them answer your questions, and see results. trivia game, quiz game, Friendship dare quiz 2024.">
-    <meta name="keywords" content="Smart,friendship,challenge,Make,quiz game,Friendship Dare, trivia game,Create,a,quiz,share,with,your,friends">
-    <meta property="og:description" content="Create an Online Friendship Quiz, Send it to your Friends, Let them answer your questions, and see results. trivia game, quiz game, Friendship dare quiz 2024.">
-    <link rel="shortcut icon" href="favicons/images-icon.png" type="image/x-icon">
-    <link rel="stylesheet" href="css/darequiz-style.css">
-    <link rel="stylesheet" href="css/darequiz-custom.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <title>Who is your true friend? Create your Quiz to find out!</title>
- 
-  </head>
+    <title>Cow Interaction</title>
     <style>
-        .startbutton{
-            -moz-border-radius: 4px;
-            -webkit-border-radius: 4px;
-            border-radius: 4px;
-            display: inline-block;
-            cursor: pointer;
-            font-family: Arial;
-            font-size: 16px;
-            font-weight: 700;
-            width: 100%;
-            height: 50px;
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        .initial-view, .second-view {
             text-align: center;
-            line-height: 50px;
-            text-decoration: none;
-            border-radius: 0px 0px 25px 25px;
-            color: #000!important;
+            display: none;
         }
-        .
+        .initial-view {
+            display: block;
+        }
+        .cow-image {
+            position: relative;
+            width: 300px;
+            cursor: pointer;
+        }
+        .arrow {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 1s infinite;
+            font-size: 2em;
+            color: orange;
+        }
+        .second-view {
+            padding-top: 20px;
+        }
+        .share-btn {
+            background-color: green;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-top: 20px;
+        }
+        .share-btn:hover {
+            background-color: darkgreen;
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translate(-50%, -10px); }
+            50% { transform: translate(-50%, 10px); }
+        }
     </style>
-    
-  <body>
-    <div class=" maincontainer max-w-screen-md bg-quizbg mx-auto">
-      
-<style>
-/* === BASE HEADING === */ 
+</head>
+<body>
 
-.twelve h1 {
-  position: relative;
-  padding: 0;
-  margin: 0;
-  font-family: "Raleway", sans-serif;
-  font-weight: 300;
-  font-size: 40px;
-
-  -webkit-transition: all 0.4s ease 0s;
-  -o-transition: all 0.4s ease 0s;
-  transition: all 0.4s ease 0s;
-}
-
-.twelve h1 span {
-  display: block;
-  font-size: 0.5em;
-  line-height: 1.3;
-}
-.twelve h1 em {
-  font-style: normal;
-  font-weight: 600;
-}
-
-.twelve h1 {
-  font-size:26px; font-weight:700;  letter-spacing:1px; text-transform:uppercase; width:160px; text-align:left;  white-space:nowrap; padding-bottom:13px;
-}
-.twelve h1:before {
-    background-color: #c50000;
-    content: '';
-    display: block;
-    height: 3px;
-    width: 75px;
-    margin-bottom: 5px;
-}
-.twelve h1:after {
-    background-color: #c50000;
-    content: '';
-    display: block;
-  position:absolute; right:0; bottom:0;
-    height: 3px;
-    width: 75px;
-    margin-bottom: 0.25em;
-}
-
-
-</style>
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-<nav class="bg-red-400 h-14 grid grid-cols-2 ">
-     
-    <div class="twelve grid justify-items-start ml-3">
-        <a href="darequiz.html"><h1 class="text-white">Darequiz</h1></a>
+    <!-- Initial Interface -->
+    <div class="initial-view" id="initialView">
+        <div class="arrow">⬇️</div>
+        <img src="cow-image.jpg" alt="Cow" class="cow-image" id="cowImage">
+        <p>इस गौ-माता को टच करके देखो</p>
     </div>
-    
-      <div class=" grid justify-items-end" id="mobilemenu">
-        <div class="cursor-pointer barcontainer pb-8 pt-5 px-7">
-          <div class="bar bar1"></div>
-          <div class="bar bar2"></div>
-          <div class="bar bar3"></div>
-        </div>
-      </div>
-      
-    
 
-</nav>
-     
-<div class="bg-red-100 w-full mobilemenucontainer">
-  <a class="block p-3 capitalize text-center hover:bg-red-300 hover:text-white cursor-pointer" href="Aboutus.html">About US</a>
-  <a class="block p-3 capitalize text-center hover:bg-red-300 hover:text-white cursor-pointer" href="social.html">social</a>
-  <a class="block p-3 capitalize text-center hover:bg-red-300 hover:text-white cursor-pointer" href="contact.html">Contact US</a>
-                        <div class="flex justify-center">
-                              <select class="grid grid-cols-1 justify-items-center rounded-xl shadow appearance-none border border-blue-200 rounded w-3/5 p-8 py-3 my-2 text-gray-700 mb-3  focus:outline-none focus:shadow-outline text-center" name="lang" id="select_lang_header">
-                                  <option value="tr">T&uuml;rk&ccedil;e</option>
-                                  <option value="ar">&#1593;&#1585;&#1576;&#1610;</option>
-                                  <option value="il">&#1506;&#1460;&#1489;&#1456;&#1512;&#1460;&#1497;&#1514;</option>
-                                  <option value="it">Italiano</option>
-                                  <option value="fr">Fran&ccedil;ais</option>
-                                  <option value="es">Espa&ntilde;ol</option>
-                                  <option value="de">Deutsch</option>
-                                  <option value="jp">&#26085;&#26412;&#35486;</option>
-                                  <option value="kr">&#54620;&#44397;&#50612;</option>
-                                  <option value="th">&#3616;&#3634;&#3625;&#3634;&#3652;&#3607;</option>
-                                  <option value="cn"></option>
-                                  <option value="my">Bahasa Melayu</option>
-                                  <option value="en">English</option>
-                                  <option value="pt">Portugu&ecirc;s</option>
-                                  <option value="dk">Dansk</option>
-                                  <option value="no">Norsk</option>
-                                  <option value="se">svenska</option>
-                                  <option value="fi">Suomi</option>
-                                  <option value="ru">&#1056;&#1091;&#1089;&#1089;&#1080;&#1081;</option>
-                                  <option value="ro">Romn&#259;</option>
-                                  <option value="vn">ti&#7871;ng Vi&#7879;t</option>
-                                  <option value="ch">&#31616;&#20013;</option>
-                                  <option value="nl">Nederlands</option>
-                                  <option value="id">Bahasa Indonesia</option>
-                                  <option value="hi">&#2367;&#2306;&#2368;</option>
-                                  <option value="hu">Magyar</option>
-                                  <option value="si">Sloven&scaron;&#269;ina</option>
-                                  <option value="cz">&#269;e&scaron;tina</option>
-                                  <option value="rs">Srpsko-hrvatski</option>
-                                  <option value="ee">Eesti</option>
-                                  <option value="el">&Epsilon;&lambda;&eta;&iota;&kappa;&#940;</option>
-                                  <option value="ua">&#1091;&#1082;&#1072;&#1111;&#1085;&#1089;&#1100;&#1082;&#1072;</option>
-                                  <option value="lv">Latvieu</option>
-                                  <option value="bg">&#1098;&#1083;&#1075;&#1072;&#1088;&#1089;&#1082;&#1080;</option>
-                            </select>
-                        </div>
-                        <script>
-                            document.getElementById('select_lang_header').addEventListener('change', function() {
-                                if(this.value=="en"){
-                                    window.location = "https://" + window.location.hostname; 
-                                }
-                                else{
-                                window.location = "https://" + this.value+"."+window.location.hostname;
-                                }
-});
-        var full = window.location.host;
-        var parts = full.split('.');
-      
-        if(parts[0].length==2){
-              document.getElementById("select_lang_header").value = parts[0];           
+    <!-- Second Interface -->
+    <div class="second-view" id="secondView">
+        <img src="cow-image.jpg" alt="Cow" class="cow-image">
+        <p>चाहते हैं कि गौ-माता को भारत की राष्ट्र-माता घोषित किया जाए</p>
+        <button class="share-btn" onclick="shareOnWhatsApp()">सबको भेजो</button>
+    </div>
+
+    <!-- Audio -->
+    <audio id="cowAudio" src="cow-audio.mp3"></audio>
+
+    <script>
+        // Function to handle the cow click
+        document.getElementById("cowImage").onclick = function() {
+            // Play audio
+            document.getElementById("cowAudio").play();
+
+            // Show the second view after clicking the cow
+            document.getElementById("initialView").style.display = "none";
+            document.getElementById("secondView").style.display = "block";
+        };
+
+        // Function to share on WhatsApp
+        function shareOnWhatsApp() {
+            const message = "चाहते हैं कि गौ-माता को भारत की राष्ट्र-माता घोषित किया जाए";
+            const whatsappURL = `https://api.whatsapp.com/send?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, "_blank");
         }
-        else{
-              document.getElementById("select_lang_header").value = "en";
-        }
-                        </script>
+    </script>
 
-  <div class="grid grid-cols-3 justify-items-center mt-4 pb-5">
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="fill-red" viewbox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 10h-2v2h2v6h3v-6h1.82l.18-2h-2v-.833c0-.478.096-.667.558-.667h1.442v-2.5h-2.404c-1.798 0-2.596.792-2.596 2.308v1.692z"></path></svg>
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="fill-red" viewbox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 7.082c1.602 0 1.792.006 2.425.035 1.627.074 2.385.845 2.46 2.459.028.633.034.822.034 2.424s-.006 1.792-.034 2.424c-.075 1.613-.832 2.386-2.46 2.46-.633.028-.822.035-2.425.035-1.602 0-1.792-.006-2.424-.035-1.63-.075-2.385-.849-2.46-2.46-.028-.632-.035-.822-.035-2.424s.007-1.792.035-2.424c.074-1.615.832-2.386 2.46-2.46.632-.029.822-.034 2.424-.034zm0-1.082c-1.63 0-1.833.007-2.474.037-2.18.1-3.39 1.309-3.49 3.489-.029.641-.036.845-.036 2.474 0 1.63.007 1.834.036 2.474.1 2.179 1.31 3.39 3.49 3.49.641.029.844.036 2.474.036 1.63 0 1.834-.007 2.475-.036 2.176-.1 3.391-1.309 3.489-3.49.029-.64.036-.844.036-2.474 0-1.629-.007-1.833-.036-2.474-.098-2.177-1.309-3.39-3.489-3.489-.641-.03-.845-.037-2.475-.037zm0 2.919c-1.701 0-3.081 1.379-3.081 3.081s1.38 3.081 3.081 3.081 3.081-1.379 3.081-3.081c0-1.701-1.38-3.081-3.081-3.081zm0 5.081c-1.105 0-2-.895-2-2 0-1.104.895-2 2-2 1.104 0 2.001.895 2.001 2s-.897 2-2.001 2zm3.202-5.922c-.397 0-.72.322-.72.72 0 .397.322.72.72.72.398 0 .721-.322.721-.72 0-.398-.322-.72-.721-.72z"></path></svg>
-    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="fill-red" viewbox="0 0 24 24"><path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.5 8.778c-.441.196-.916.328-1.414.388.509-.305.898-.787 1.083-1.362-.476.282-1.003.487-1.564.597-.448-.479-1.089-.778-1.796-.778-1.59 0-2.758 1.483-2.399 3.023-2.045-.103-3.86-1.083-5.074-2.572-.645 1.106-.334 2.554.762 3.287-.403-.013-.782-.124-1.114-.308-.027 1.14.791 2.207 1.975 2.445-.346.094-.726.116-1.112.042.313.978 1.224 1.689 2.3 1.709-1.037.812-2.34 1.175-3.647 1.021 1.09.699 2.383 1.106 3.773 1.106 4.572 0 7.154-3.861 6.998-7.324.482-.346.899-.78 1.229-1.274z"></path></svg>
-  </div>
-</div>
-<center>
-<script async src="js/js-gpt.js"></script>
-<script>
-  window.googletag = window.googletag || {cmd: []};
-  googletag.cmd.push(function() {
-    googletag.defineSlot('/22874710062/cl_300*250_1', [300, 250], 'div-gpt-ad-1726568904330-0').addService(googletag.pubads());
-    googletag.pubads().enableSingleRequest();
-    googletag.enableServices();
-  });
-</script>
-<!-- /22874710062/cl_300*250_1 -->
-<div id="div-gpt-ad-1726568904330-0" style="min-width: 300px; min-height: 250px;">
-  <script>
-    googletag.cmd.push(function() { googletag.display('div-gpt-ad-1726568904330-0'); });
-  </script>
-</div>
-</center>
-<audio id="tick">
- <source src="assets/sounds/tick.mp3" type="audio/mpeg">
-</source></audio>
-<audio id="right">
- <source src="assets/sounds/right.wav" type="audio/ogg">
-</source></audio>
-<audio id="wrong">
- <source src="assets/sounds/wrong.wav" type="audio/ogg">
-</source></audio>
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-NSYNG6QCM2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-NSYNG6QCM2');
-</script>
-  
-  
-   
-      
-     
-        <div class="content mt-10">
-          
-            <div class="flex-col flex justify-center items-center">
-                   
-  
-                <div class=" content bg-quizbg container w-96 m-0 pl-8 pr-8 pb-8 bg-white rounded-xl shadow-lg mb-10 ">
-                   
-                        <h3 class="mb-1 font-sans font-semibold text-gray-700  cursor-pointer text-center mt-5"><b>How Strong is Your Friendship?</b></h3>
-                        <span class="text-lg text-gray-700"> </span>   
-                   
-                    <h3 class="mb-1 font-sans font-semibold text-red-700  cursor-pointer text-center m-5"><b>Do your friends actually KNOW YOU?</b></h3>
-                    <div class="text-center relative">
-                        <a href="home.html">    
-                            <img style="width:100%; max-width:400px; border-radius: 25px 25px 0px 0px;" src="images/cate-cat1.jpg">
-                        </a>
-                        <a class="startbutton bg-gradient-to-r from-purple-400 via-pink-500 to-red-500" href="home.html"><b>&#128073; Start <i class="icon icon-arrow-right"></i></b></a>
-                        
-                    </div>    
-                </div>
-              
-                
-                <div class=" content bg-quizbg container w-96 m-0 pl-8 pr-8 pb-8 bg-white rounded-xl shadow-lg mb-10 ">
-                   
-                        <h3 class="mb-1 font-sans font-semibold text-gray-700  cursor-pointer text-center mt-5"><b>Who knows about your choices? Let's find out</b></h3>
-                        <span class="text-lg text-gray-700"> </span>   
-                   
-                    <h3 class="mb-1 font-sans font-semibold text-red-700  cursor-pointer text-center m-5"><b>&#128155; Test Your Bond with Friends! &#128149;</b></h3>
-                    <div class="text-center relative">
-                        <a href="home.html">    
-                            <img style="width:100%; max-width:400px; border-radius: 25px 25px 0px 0px;" src="images/cate-cat2.jpg">
-                        </a>
-                        <a class="startbutton bg-gradient-to-r from-purple-400 via-pink-500 to-red-500" href="home.html"><b>&#128073; Start <i class="icon icon-arrow-right"></i></b></a>
-                        
-                    </div>    
-                </div>
-              
-                
-                <div class=" content bg-quizbg container w-96 m-0 pl-8 pr-8 pb-8 bg-white rounded-xl shadow-lg mb-10 ">
-                   
-                        <h3 class="mb-1 font-sans font-semibold text-gray-700  cursor-pointer text-center mt-5"><b>Who Is Your True Friend? Let&rsquo;s Find Out!</b></h3>
-                        <span class="text-lg text-gray-700"> </span>   
-                   
-                    <h3 class="mb-1 font-sans font-semibold text-red-700  cursor-pointer text-center m-5"><b>  </b></h3>
-                    <div class="text-center relative">
-                        <a href="home.html">    
-                            <img style="width:100%; max-width:400px; border-radius: 25px 25px 0px 0px;" src="images/images-cat3.jpg">
-                        </a>
-                        <a class="startbutton bg-gradient-to-r from-purple-400 via-pink-500 to-red-500" href="home.html"><b>&#128073; Start <i class="icon icon-arrow-right"></i></b></a>
-                        
-                    </div>    
-                </div>
-              
-                
-                <div class=" content bg-quizbg container w-96 m-0 pl-8 pr-8 pb-8 bg-white rounded-xl shadow-lg mb-10 ">
-                   
-                        <h3 class="mb-1 font-sans font-semibold text-gray-700  cursor-pointer text-center mt-5"><b>Friendship World Cup 2022 &#127942; Create your Friendship...</b></h3>
-                        <span class="text-lg text-gray-700"> </span>   
-                   
-                    <h3 class="mb-1 font-sans font-semibold text-red-700  cursor-pointer text-center m-5"><b>  How well do your friends know you?</b></h3>
-                    <div class="text-center relative">
-                        <a href="home.html">    
-                            <img style="width:100%; max-width:400px; border-radius: 25px 25px 0px 0px;" src="images/images-cat4.jpg">
-                        </a>
-                        <a class="startbutton bg-gradient-to-r from-purple-400 via-pink-500 to-red-500" href="home.html"><b>&#128073; Start <i class="icon icon-arrow-right"></i></b></a>
-                        
-                    </div>    
-                </div>
-              
-              
-                
-            </div> 
-        </div>
-
-
- <script>
-    mobilemenuicon = document.querySelector('.barcontainer');
-    mobilemenucontainer = document.querySelector('.mobilemenucontainer');
-    mobilemenuicon.addEventListener("click", menumenu);
-    var bar1= document.querySelectorAll('.bar')[0];
-        var bar2= document.querySelectorAll('.bar')[1];
-        var bar3= document.querySelectorAll('.bar')[2];
-
-  function menumenu(){
-    if(mobilemenucontainer.style.visibility=="visible")
-    {
-    mobilemenucontainer.style.visibility="hidden";
-    mobilemenucontainer.style.opacity="0";
-    mobilemenucontainer.style.width="0";
-    mobilemenucontainer.style.height="0";      
-    
-    bar1.classList.remove('bar1hover');
-    bar2.classList.remove('bar2hover');
-    bar3.classList.remove('bar3hover');
-
-    bar1.classList.add('bar1');
-    bar2.classList.add('bar2');
-    bar3.classList.add('bar3');
-
-  } 
-    else{
-    mobilemenucontainer.style.visibility="visible";
-    mobilemenucontainer.style.opacity="1";
-    mobilemenucontainer.style.width="100%";
-    mobilemenucontainer.style.height="25%"; 
-
-    bar1.classList.remove('bar1');
-    bar2.classList.remove('bar2');
-    bar3.classList.remove('bar3');
-
-    bar1.classList.add('bar1hover');
-    bar2.classList.add('bar2hover');
-    bar3.classList.add('bar3hover');
-
-
-    
-}
-}
-
-</script>
-
-    
-              <style>
-ul.alllang{
-    align-items: center;
-    display: flex;
-    flex-wrap: wrap;
-    list-style-type: none;
-    font-size: initial;  
-    color: #007bff;
-}
-li {
-    margin-top: 0.4rem;
-    padding-left: 10px;
-    padding-right: 10px;
-}   
-.btmborder{
-    margin-top: 17px;
-    border-top: 2px solid #007bff;
-    margin-bottom: 17px;
-}
- 
-</style>
-
-
-</div>
-<div class="btmborder">
-    
-</div>
-<center>
-
-</center>
-        <div class="grid text-center">
-          <a href="privacy.html">Privacy Policy</a>
-          <a href="terms.html">Terms Of Use</a>
-          <a href="faq.html">FAQs</a>
-        </div>
-        <div class="flex justify-center  space-x-4 my-6">
-          <div class="max-w-14">
-
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="fill-red" viewbox="0 0 24 24">
-              <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 10h-2v2h2v6h3v-6h1.82l.18-2h-2v-.833c0-.478.096-.667.558-.667h1.442v-2.5h-2.404c-1.798 0-2.596.792-2.596 2.308v1.692z"></path>
-            </svg>
-          </div>
-
-
-          <div class="max-w-14">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="fill-red" viewbox="0 0 24 24">
-              <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 7.082c1.602 0 1.792.006 2.425.035 1.627.074 2.385.845 2.46 2.459.028.633.034.822.034 2.424s-.006 1.792-.034 2.424c-.075 1.613-.832 2.386-2.46 2.46-.633.028-.822.035-2.425.035-1.602 0-1.792-.006-2.424-.035-1.63-.075-2.385-.849-2.46-2.46-.028-.632-.035-.822-.035-2.424s.007-1.792.035-2.424c.074-1.615.832-2.386 2.46-2.46.632-.029.822-.034 2.424-.034zm0-1.082c-1.63 0-1.833.007-2.474.037-2.18.1-3.39 1.309-3.49 3.489-.029.641-.036.845-.036 2.474 0 1.63.007 1.834.036 2.474.1 2.179 1.31 3.39 3.49 3.49.641.029.844.036 2.474.036 1.63 0 1.834-.007 2.475-.036 2.176-.1 3.391-1.309 3.489-3.49.029-.64.036-.844.036-2.474 0-1.629-.007-1.833-.036-2.474-.098-2.177-1.309-3.39-3.489-3.489-.641-.03-.845-.037-2.475-.037zm0 2.919c-1.701 0-3.081 1.379-3.081 3.081s1.38 3.081 3.081 3.081 3.081-1.379 3.081-3.081c0-1.701-1.38-3.081-3.081-3.081zm0 5.081c-1.105 0-2-.895-2-2 0-1.104.895-2 2-2 1.104 0 2.001.895 2.001 2s-.897 2-2.001 2zm3.202-5.922c-.397 0-.72.322-.72.72 0 .397.322.72.72.72.398 0 .721-.322.721-.72 0-.398-.322-.72-.721-.72z"></path>
-            </svg>
-          </div>
-
-          <div class="max-w-14">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" class="fill-red" viewbox="0 0 24 24">
-              <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.5 8.778c-.441.196-.916.328-1.414.388.509-.305.898-.787 1.083-1.362-.476.282-1.003.487-1.564.597-.448-.479-1.089-.778-1.796-.778-1.59 0-2.758 1.483-2.399 3.023-2.045-.103-3.86-1.083-5.074-2.572-.645 1.106-.334 2.554.762 3.287-.403-.013-.782-.124-1.114-.308-.027 1.14.791 2.207 1.975 2.445-.346.094-.726.116-1.112.042.313.978 1.224 1.689 2.3 1.709-1.037.812-2.34 1.175-3.647 1.021 1.09.699 2.383 1.106 3.773 1.106 4.572 0 7.154-3.861 6.998-7.324.482-.346.899-.78 1.229-1.274z"></path>
-            </svg>
-          </div>
-        </div>
-
-          
-
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-SJSP0P2PT5"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-SJSP0P2PT5');
-</script>
-    
-    
-    </body>
-    
+</body>
 </html>
