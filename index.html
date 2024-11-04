@@ -142,6 +142,14 @@
     width: 70px;
     height: auto; 
         }
+
+        @keyframes shake {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+        }
     </style>
 </head>
 <body>
@@ -173,7 +181,7 @@
         <div class="om-symbol right" style="top: 120px;">🕉</div>
         <div class="om-symbol right" style="top: 180px;">🕉</div>
 
-        <img src="images/img-shubhkamna.png" width="80%" height="auto" style="animation: tada 2.5s infinite">
+        <img src="images/img-shubhkamna.png" width="80%" height="auto" style="animation: shake 0.5s infinite;">
         <img src="images/img-gau.png" alt="Cow" class="cow-image">
         <button class="share-btn" onclick="shareOnWhatsApp()">
             <img src="whatsapp-icon.png" alt="WhatsApp Icon" style="width: 20px;">
