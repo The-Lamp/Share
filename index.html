@@ -126,6 +126,17 @@
             /* Adding some style to make it fancy */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
           }
+
+        .cow-image {
+    cursor: pointer;
+    width: 100%;
+    animation: floatCow 2s infinite alternate;
+}
+
+@keyframes floatCow {
+    0% { transform: translateY(0); }
+    100% { transform: translateY(-10px); }
+}
     </style>
 </head>
 <body>
@@ -133,8 +144,13 @@
     <!-- Initial Interface -->
     <div class="initial-view" id="initialView">
         <div class="window">
-             <p class="touch-text">इस गौ-माता को टच करके देखो</p>
-            <img src="images/img-arrow.gif" alt="Arrow GIF" class="arrow-gif">
+             <p class="touch-text">
+    इस गौ-माता को<br>
+    टच करके देखो
+</p>
+<div style="margin-top: 10px;"> <!-- Add this wrapper with margin-top for spacing -->
+    <img src="arrow.gif" alt="Arrow GIF" class="arrow-gif">
+</div>
             <img src="images/img-gau.png" alt="Cow" class="cow-image" id="cowImage">
         </div>
     </div>
