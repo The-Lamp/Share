@@ -46,55 +46,364 @@
     </style>
 </head>
 <body>
+<div>
+    <label>Apni Umar daalo: </label>
+    <input type="number" id="ageInput" placeholder="e.g., 25">
+    <button onclick="predictWedding()">Predict Shaadi</button>
+    <p id="weddingResult"></p>
+</div>
 
-    <div class="container">
-        <h1>Welcome to Your Fun Prediction Portal!</h1>
-        <p>Answer a few questions to get funny predictions about your life!</p>
+<script>
+    function predictWedding() {
+        const age = document.getElementById("ageInput").value;
+        let response = "";
 
-        <!-- Question 1: Meri Shaadi Kab Hogi? -->
-        <h2>1. Meri Shaadi Kab Hogi? 😄</h2>
-        <input type="text" id="marriageName" placeholder="Enter your name">
-        <button onclick="predictMarriageDate()">Predict Marriage Date</button>
-        <p id="marriageDateOutput"></p>
+        if (age < 20) {
+            response = "Beta, abhi toh school/collage enjoy kar, shaadi ke liye time hai!";
+        } else if (age >= 20 && age < 30) {
+            response = "Shaadi ke chances hain, bas ladki ke ghar se green signal ka intezaar hai!";
+        } else if (age >= 30 && age < 40) {
+            response = "Lagta hai thoda der ho gaya, but no worries - special shaadi ka plan ban raha hai!";
+        } else {
+            response = "Ab toh tujhe baraat leke khud hi nikalna padega, koi shaadi karne ko tayaar nahi hai!";
+        }
 
-        <!-- Question 2: Meri Shaadi Kisase Hogi? -->
-        <h2>2. Meri Shaadi Kisase Hogi? 😁</h2>
-        <input type="text" id="partnerType" placeholder="Describe your dream partner">
-        <button onclick="predictPartner()">Predict Partner</button>
-        <p id="partnerOutput"></p>
+        document.getElementById("weddingResult").innerHTML = response;
+    }
+</script>
 
-        <!-- Continue similarly for each question -->
+    <div>
+    <label>Apne Personality Type select karo: </label>
+    <select id="personalityInput">
+        <option value="romantic">Romantic</option>
+        <option value="adventurous">Adventurous</option>
+        <option value="practical">Practical</option>
+        <option value="humorous">Humorous</option>
+    </select>
+    <button onclick="predictPartner()">Predict Partner</button>
+    <p id="partnerResult"></p>
+</div>
 
-        <!-- JavaScript code to handle predictions -->
-        <script>
-            // JavaScript for Question 1: Predict Marriage Date
-            function predictMarriageDate() {
-                let name = document.getElementById("marriageName").value;
-                let marriageYear = new Date().getFullYear() + Math.floor(Math.random() * 10 + 1);
-                document.getElementById("marriageDateOutput").textContent = `${name}, you'll get married in the year ${marriageYear}.`;
-            }
+<script>
+    function predictPartner() {
+        const personality = document.getElementById("personalityInput").value;
+        let response = "";
 
-            // JavaScript for Question 2: Predict Marriage Partner
-            function predictPartner() {
-                let partnerDescription = document.getElementById("partnerType").value;
-                let partners = ["a Bollywood star", "a millionaire", "a software developer", "a mysterious artist", "a chef"];
-                let randomPartner = partners[Math.floor(Math.random() * partners.length)];
-                document.getElementById("partnerOutput").textContent = `Your future partner will be ${randomPartner} who matches your description of "${partnerDescription}".`;
-            }
+        switch (personality) {
+            case "romantic":
+                response = "Teri shaadi kisi Bollywood lover se hogi jo tujhe rose ke saath propose karega!";
+                break;
+            case "adventurous":
+                response = "Shaadi ek traveler ya mountain climber se hogi. Tere honeymoon ke plans thrill se bharpoor rahenge!";
+                break;
+            case "practical":
+                response = "Shaadi ek sensible aur responsible insaan se hogi jo har cheez ka plan karega.";
+                break;
+            case "humorous":
+                response = "Shaadi kisi comedian type ke insaan se hogi - life mein hamesha hasna-mastana rahega!";
+                break;
+            default:
+                response = "Lagta hai tujhe akela rehne ka shauk hai!";
+        }
 
-            // Continue adding functions for each question following this pattern
-
-            // JavaScript for Question 13: Meri Girlfriend Kab Banegi?
-            function predictGirlfriendDate() {
-                let name = document.getElementById("girlfriendName").value;
-                let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-                let randomMonth = months[Math.floor(Math.random() * months.length)];
-                document.getElementById("girlfriendDateOutput").textContent = `${name}, you'll likely meet your girlfriend in ${randomMonth} of this year!`;
-            }
-
-            // Add any additional JavaScript functions here for Questions 14 onward
+        document.getElementById("partnerResult").innerHTML = response;
+    }
         </script>
-    </div>
+
+    <div>
+    <label>Apne aansuon ka score daalo (0-10): </label>
+    <input type="number" id="emotionalScore" min="0" max="10">
+    <button onclick="checkEmotion()">Check Emotion</button>
+    <p id="emotionResult"></p>
+</div>
+
+<script>
+    function checkEmotion() {
+        const score = document.getElementById("emotionalScore").value;
+        let response = "";
+
+        if (score <= 3) {
+            response = "Bilkul cool, tu stone-hearted hai! Kabhi aansu nikalte nahi!";
+        } else if (score > 3 && score <= 7) {
+            response = "Thoda emotional hai, but manageable!";
+        } else {
+            response = "Tere emotions flood jaise hain! Har baat pe aansu - Bollywood style!";
+        }
+
+        document.getElementById("emotionResult").innerHTML = response;
+    }
+</script>
+
+    <div>
+    <label>Kitne bachchon ka sapna hai? (1-5): </label>
+    <input type="number" id="kidCount" min="1" max="5">
+    <button onclick="predictKids()">Predict Kids</button>
+    <p id="kidsResult"></p>
+</div>
+
+<script>
+    function predictKids() {
+        const desiredKids = document.getElementById("kidCount").value;
+        let response = `Tumhare ${desiredKids} bachche honge, par sambhalna mushkil hoga! 😅`;
+
+        if (desiredKids >= 3) {
+            response += " Tumhe toh mini cricket team chahiye lagta hai!";
+        } else if (desiredKids == 1) {
+            response += " Tumhe sirf ek me hi pyaar milega!";
+        }
+
+        document.getElementById("kidsResult").innerHTML = response;
+    }
+</script>
+
+    <div>
+    <label>Apni current age: </label>
+    <input type="number" id="currentAge" placeholder="e.g., 25">
+    <button onclick="predictDeath()">Predict Death</button>
+    <p id="deathResult"></p>
+</div>
+
+<script>
+    function predictDeath() {
+        const age = document.getElementById("currentAge").value;
+        let response = "";
+
+        if (age < 40) {
+            response = "Tension mat le! Abhi tere paas badiya life hai!";
+        } else if (age >= 40 && age <= 60) {
+            response = "Thoda slow ho ja, ab age ho rahi hai!";
+        } else {
+            response = "Ab toh zen mode mein enter kar, zindagi ko enjoy kar!";
+        }
+
+        document.getElementById("deathResult").innerHTML = response;
+    }
+</script>
+
+    <div>
+    <label>Technology ke liye apna interest: </label>
+    <select id="techInterest">
+        <option value="high">High</option>
+        <option value="medium">Medium</option>
+        <option value="low">Low</option>
+    </select>
+    <button onclick="robotMarriage()">Check Robot Shaadi</button>
+    <p id="robotResult"></p>
+</div>
+
+<script>
+    function robotMarriage() {
+        const interest = document.getElementById("techInterest").value;
+        let response = "";
+
+        if (interest === "high") {
+            response = "Wah bhai! Tumhara future mein robot ke sath shaadi hona bilkul possible hai!";
+        } else if (interest === "medium") {
+            response = "Robot option hai, par humans se hi shaadi hone ka chance hai!";
+        } else {
+            response = "Tumhe toh robot ka option nahi lagta. Real insaan hi milega!";
+        }
+
+        document.getElementById("robotResult").innerHTML = response;
+    }
+</script>
+
+    <div>
+    <label>Pehle crush ka naam likho: </label>
+    <input type="text" id="firstCrushName" placeholder="e.g., Priya">
+    <label>Kitne din ho gaye crush ko like karte hue? (days): </label>
+    <input type="number" id="crushDays" placeholder="e.g., 30">
+    <button onclick="checkCrushMemory()">Check Memory</button>
+    <p id="crushMemoryResult"></p>
+</div>
+
+<script>
+    function checkCrushMemory() {
+        const crushName = document.getElementById("firstCrushName").value;
+        const days = document.getElementById("crushDays").value;
+        let response = "";
+
+        if (days < 15) {
+            response = `Ohh bhai! ${crushName} ka naam toh tu bhool hi jaayega agar nayi crush aayi toh!`;
+        } else if (days >= 15 && days < 60) {
+            response = `Lagta hai ${crushName} ka naam yaad rahega, but nayi crush aaye toh thoda confusion ho sakta hai!`;
+        } else {
+            response = `Wah! ${crushName} tera saccha pyaar hai - tu toh uska naam bhool hi nahi sakta!`;
+        }
+
+        document.getElementById("crushMemoryResult").innerHTML = response;
+    }
+</script>
+
+    <div>
+    <label>Apna current income level select karo (monthly): </label>
+    <select id="incomeLevel">
+        <option value="low">Below 20k</option>
+        <option value="medium">20k-50k</option>
+        <option value="high">Above 50k</option>
+    </select>
+    <button onclick="predictWealth()">Check Wealth Prediction</button>
+    <p id="wealthResult"></p>
+</div>
+
+<script>
+    function predictWealth() {
+        const income = document.getElementById("incomeLevel").value;
+        let response = "";
+
+        if (income === "low") {
+            response = "Beta abhi struggle kar, future mein amiri ke chance hain - patience rakh!";
+        } else if (income === "medium") {
+            response = "Thoda aur mehnat karo, amir banne ka scope hai!";
+        } else {
+            response = "Wah bhai, ab toh tu aish karega, amiri door nahi!";
+        }
+
+        document.getElementById("wealthResult").innerHTML = response;
+    }
+</script>
+
+    <div>
+    <label>Kitne baar friends ne data maanga hai is mahine? </label>
+    <input type="number" id="dataRequest" placeholder="e.g., 5">
+    <button onclick="checkFriendLoyalty()">Check Loyalty</button>
+    <p id="friendLoyaltyResult"></p>
+</div>
+
+<script>
+    function checkFriendLoyalty() {
+        const requests = document.getElementById("dataRequest").value;
+        let response = "";
+
+        if (requests <= 2) {
+            response = "Wah! Tere friends asli dost hain, WiFi ya data ke liye nahi hai.";
+        } else if (requests > 2 && requests <= 5) {
+            response = "Thoda doubt hai, lagta hai data ke bhi shaukeen hain.";
+        } else {
+            response = "Beta, ye WiFi-dost hain! Tere data ka faayda le rahe hain!";
+        }
+
+        document.getElementById("friendLoyaltyResult").innerHTML = response;
+    }
+</script>
+
+    <div>
+    <label>Apna favourite animal select karo: </label>
+    <select id="favAnimal">
+        <option value="lion">Lion</option>
+        <option value="peacock">Peacock</option>
+        <option value="dolphin">Dolphin</option>
+        <option value="dog">Dog</option>
+        <option value="eagle">Eagle</option>
+    </select>
+    <button onclick="pastFutureLife()">Predict Life</button>
+    <p id="lifePredictionResult"></p>
+</div>
+
+<script>
+    function pastFutureLife() {
+        const animal = document.getElementById("favAnimal").value;
+        let response = "";
+
+        switch (animal) {
+            case "lion":
+                response = "Pichhle janam mein tu jungle ka raja tha! Agle janam mein shayad politician banega!";
+                break;
+            case "peacock":
+                response = "Pichhle janm mein tu rang birangi murgi tha, agle janm mein artist banne ke chance hain!";
+                break;
+            case "dolphin":
+                response = "Tu samandar mein tha pichle janam, agle janam mein tu deep thinker banega!";
+                break;
+            case "dog":
+                response = "Pichhle janam mein tu loyal tha, agle janam mein bhi loyal dost banega!";
+                break;
+            case "eagle":
+                response = "Pichhle janm mein tu aasmaan mein tha, agle janam mein high flyer banega!";
+                break;
+        }
+
+        document.getElementById("lifePredictionResult").innerHTML = response;
+    }
+</script>
+
+    <div>
+    <label>Apne daily sleep hours daalo: </label>
+    <input type="number" id="sleepHours" placeholder="e.g., 6">
+    <button onclick="predictSleep()">Check Sleep Completion</button>
+    <p id="sleepResult"></p>
+</div>
+
+<script>
+    function predictSleep() {
+        const sleepHours = document.getElementById("sleepHours").value;
+        let response = "";
+
+        if (sleepHours < 5) {
+            response = "Bhai, tujhe bohot nind ki zaroorat hai! Kabhi toh poori kar le!";
+        } else if (sleepHours >= 5 && sleepHours <= 7) {
+            response = "Thodi aur nind le, abhi poori nahi hui hai.";
+        } else {
+            response = "Shabaash! Teri nind poori ho rahi hai!";
+        }
+
+        document.getElementById("sleepResult").innerHTML = response;
+    }
+</script>
+
+    <div>
+    <label>Apne daily adventure level ka score do (1-10): </label>
+    <input type="number" id="adventureLevel" min="1" max="10">
+    <button onclick="predictGangsterLife()">Gangster Prediction</button>
+    <p id="gangsterResult"></p>
+</div>
+
+<script>
+    function predictGangsterLife() {
+        const adventure = document.getElementById("adventureLevel").value;
+        let response = "";
+
+        if (adventure <= 3) {
+            response = "Bhai, tu thoda soft hai! Gangster banne ka koi chance nahi!";
+        } else if (adventure > 3 && adventure <= 7) {
+            response = "Thoda daring ho raha hai tu, gangster banne ke 50-50 chance hain!";
+        } else {
+            response = "Beta tu toh full gangster mode mein hai, bas bandook uthane ki deri hai!";
+        }
+
+        document.getElementById("gangsterResult").innerHTML = response;
+    }
+</script>
+
+    <div>
+    <label>Apne flirt skills ko rate karo (1-10): </label>
+    <input type="number" id="flirtSkills" min="1" max="10" placeholder="e.g., 6">
+    <button onclick="predictGirlfriend()">Check Girlfriend Prediction</button>
+    <p id="girlfriendResult"></p>
+</div>
+
+<script>
+    function predictGirlfriend() {
+        const flirtLevel = document.getElementById("flirtSkills").value;
+        let response = "";
+
+        if (flirtLevel <= 3) {
+            response = "Bhai, tujhe thoda aur practice chahiye! Aise toh girlfriend aane mein time lagega!";
+        } else if (flirtLevel > 3 && flirtLevel <= 5) {
+            response = "Good effort! Lagta hai kuch hi time mein tu relationship mein hoga. Bas thoda aur improvement!";
+        } else if (flirtLevel > 5 && flirtLevel <= 7) {
+            response = "Wah bhai! Tere flirt skills sahi raaste pe hain. Agle mahine tak girlfriend mil sakti hai!";
+        } else if (flirtLevel > 7 && flirtLevel <= 9) {
+            response = "Tu toh full-on charming hai! Lagta hai, kisi bhi din tu girlfriend ke saath date pe jaa sakta hai!";
+        } else if (flirtLevel === '10') {
+            response = "Guru, tu toh flirt ka guru hai! Teri girlfriend ab door nahi, bas call kar aur propose kar!";
+        } else {
+            response = "Input sahi daal bhai! Score 1 se 10 ke beech mein dena hai.";
+        }
+
+        document.getElementById("girlfriendResult").innerHTML = response;
+    }
+</script>
 
 </body>
 </html>
