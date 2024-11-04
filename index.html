@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cow Interaction</title>
+    <title>Cow Interaction Interface</title>
     <style>
         /* Basic reset */
         * {
@@ -27,23 +27,79 @@
         .initial-view {
             display: block;
         }
-        .cow-image {
+        
+        /* Styles for the window-like design with curtains */
+        .window {
             position: relative;
-            width: 300px;
-            cursor: pointer;
+            width: 350px;
+            border: 3px solid #FFD700;
+            padding: 20px;
+            background-color: white;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
         }
-        .arrow {
+        .curtain {
             position: absolute;
-            top: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 1s infinite;
-            font-size: 2em;
-            color: orange;
+            top: 0;
+            width: 50%;
+            height: 100%;
+            background: yellow;
+            overflow: hidden;
         }
+        .curtain.left {
+            left: 0;
+        }
+        .curtain.right {
+            right: 0;
+        }
+
+        /* GIF Arrow and Cow Image */
+        .arrow-gif {
+            width: 50px;
+            margin: -40px auto 10px auto;
+        }
+        .cow-image {
+            cursor: pointer;
+            width: 100%;
+        }
+
+        /* Om symbols with animation */
+        .om-symbol {
+            position: absolute;
+            font-size: 20px;
+            animation: upDown 1s infinite alternate;
+            color: #FF8C00;
+        }
+        .om-symbol.left {
+            left: -30px;
+        }
+        .om-symbol.right {
+            right: -30px;
+        }
+        .om-symbol:nth-child(odd) {
+            animation-delay: 0.5s;
+        }
+        @keyframes upDown {
+            from { transform: translateY(0); }
+            to { transform: translateY(10px); }
+        }
+
+        /* Second View Styling */
         .second-view {
             padding-top: 20px;
         }
+        .animated-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: #800000;
+            animation: fadeIn 2s infinite alternate;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0.6; }
+            to { opacity: 1; }
+        }
+        
+        /* Share Button */
         .share-btn {
             background-color: green;
             color: white;
@@ -52,14 +108,13 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 1em;
+            display: flex;
+            align-items: center;
+            gap: 5px;
             margin-top: 20px;
         }
         .share-btn:hover {
             background-color: darkgreen;
-        }
-        @keyframes bounce {
-            0%, 100% { transform: translate(-50%, -10px); }
-            50% { transform: translate(-50%, 10px); }
         }
     </style>
 </head>
@@ -67,16 +122,33 @@
 
     <!-- Initial Interface -->
     <div class="initial-view" id="initialView">
-        <div class="arrow">⬇️</div>
-        <img src="cow-image.jpg" alt="Cow" class="cow-image" id="cowImage">
-        <p>इस गौ-माता को टच करके देखो</p>
+        <div class="window">
+            <img src="arrow.gif" alt="Arrow GIF" class="arrow-gif">
+            <img src="cow-image.jpg" alt="Cow" class="cow-image" id="cowImage">
+            <p>इस गौ-माता को टच करके देखो</p>
+        </div>
     </div>
 
     <!-- Second Interface -->
     <div class="second-view" id="secondView">
+        <!-- Om Symbols on Both Sides -->
+        <div class="om-symbol left">🕉</div>
+        <div class="om-symbol left" style="top: 60px;">🕉</div>
+        <div class="om-symbol left" style="top: 120px;">🕉</div>
+        <div class="om-symbol left" style="top: 180px;">🕉</div>
+
+        <div class="om-symbol right">🕉</div>
+        <div class="om-symbol right" style="top: 60px;">🕉</div>
+        <div class="om-symbol right" style="top: 120px;">🕉</div>
+        <div class="om-symbol right" style="top: 180px;">🕉</div>
+
         <img src="cow-image.jpg" alt="Cow" class="cow-image">
-        <p>चाहते हैं कि गौ-माता को भारत की राष्ट्र-माता घोषित किया जाए</p>
-        <button class="share-btn" onclick="shareOnWhatsApp()">सबको भेजो</button>
+        <p class="animated-text">चाहते हैं कि गौ-माता को भारत की राष्ट्र-माता घोषित किया जाए</p>
+        <button class="share-btn" onclick="shareOnWhatsApp()">
+            <img src="whatsapp-icon.png" alt="WhatsApp Icon" style="width: 20px;">
+            सबको भेजो
+            <img src="whatsapp-icon.png" alt="WhatsApp Icon" style="width: 20px;">
+        </button>
     </div>
 
     <!-- Audio -->
