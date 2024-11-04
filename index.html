@@ -3,109 +3,98 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Future Predictor</title>
+    <title>Future Prediction Website</title>
     <style>
+        /* Basic CSS for styling */
         body {
             font-family: Arial, sans-serif;
-            background-color: #f0f4f8;
-            color: #333;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+            background-color: #f0f0f0;
             margin: 0;
-            flex-direction: column;
+            padding: 20px;
         }
         .container {
-            width: 100%;
             max-width: 600px;
-            background: white;
+            margin: 0 auto;
             padding: 20px;
+            background-color: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
-        h1 {
-            text-align: center;
-            color: #007BFF;
+        h2 {
+            color: #333;
         }
-        label, input, select {
+        label, input, button, p {
             display: block;
+            margin-bottom: 10px;
+        }
+        input[type="text"], input[type="number"] {
             width: 100%;
-            margin-bottom: 15px;
+            padding: 8px;
+            margin-top: 5px;
         }
         button {
-            width: 100%;
-            padding: 10px;
-            background-color: #007BFF;
+            padding: 10px 15px;
+            background-color: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
-            font-size: 16px;
+            cursor: pointer;
         }
-        .result {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #e8f4ff;
-            border-radius: 5px;
-            color: #007BFF;
+        button:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Your Future Prediction</h1>
-        <form id="predictionForm">
-            <label for="name">Your Name</label>
-            <input type="text" id="name" placeholder="Enter your name" required>
+        <h1>Welcome to Your Fun Prediction Portal!</h1>
+        <p>Answer a few questions to get funny predictions about your life!</p>
 
-            <label for="age">Your Age</label>
-            <input type="number" id="age" min="1" placeholder="Enter your age" required>
+        <!-- Question 1: Meri Shaadi Kab Hogi? -->
+        <h2>1. Meri Shaadi Kab Hogi? 😄</h2>
+        <input type="text" id="marriageName" placeholder="Enter your name">
+        <button onclick="predictMarriageDate()">Predict Marriage Date</button>
+        <p id="marriageDateOutput"></p>
 
-            <label for="profession">Choose Your Profession</label>
-            <select id="profession">
-                <option value="Doctor">Doctor</option>
-                <option value="Engineer">Engineer</option>
-                <option value="Artist">Artist</option>
-                <option value="Entrepreneur">Entrepreneur</option>
-                <option value="Scientist">Scientist</option>
-                <option value="Teacher">Teacher</option>
-            </select>
+        <!-- Question 2: Meri Shaadi Kisase Hogi? -->
+        <h2>2. Meri Shaadi Kisase Hogi? 😁</h2>
+        <input type="text" id="partnerType" placeholder="Describe your dream partner">
+        <button onclick="predictPartner()">Predict Partner</button>
+        <p id="partnerOutput"></p>
 
-            <button type="button" onclick="predictFuture()">Predict My Future</button>
-        </form>
-        <div class="result" id="result"></div>
+        <!-- Continue similarly for each question -->
+
+        <!-- JavaScript code to handle predictions -->
+        <script>
+            // JavaScript for Question 1: Predict Marriage Date
+            function predictMarriageDate() {
+                let name = document.getElementById("marriageName").value;
+                let marriageYear = new Date().getFullYear() + Math.floor(Math.random() * 10 + 1);
+                document.getElementById("marriageDateOutput").textContent = `${name}, you'll get married in the year ${marriageYear}.`;
+            }
+
+            // JavaScript for Question 2: Predict Marriage Partner
+            function predictPartner() {
+                let partnerDescription = document.getElementById("partnerType").value;
+                let partners = ["a Bollywood star", "a millionaire", "a software developer", "a mysterious artist", "a chef"];
+                let randomPartner = partners[Math.floor(Math.random() * partners.length)];
+                document.getElementById("partnerOutput").textContent = `Your future partner will be ${randomPartner} who matches your description of "${partnerDescription}".`;
+            }
+
+            // Continue adding functions for each question following this pattern
+
+            // JavaScript for Question 13: Meri Girlfriend Kab Banegi?
+            function predictGirlfriendDate() {
+                let name = document.getElementById("girlfriendName").value;
+                let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                let randomMonth = months[Math.floor(Math.random() * months.length)];
+                document.getElementById("girlfriendDateOutput").textContent = `${name}, you'll likely meet your girlfriend in ${randomMonth} of this year!`;
+            }
+
+            // Add any additional JavaScript functions here for Questions 14 onward
+        </script>
     </div>
 
-    <script>
-        function predictFuture() {
-            const name = document.getElementById('name').value;
-            const age = parseInt(document.getElementById('age').value);
-            const profession = document.getElementById('profession').value;
-            
-            // Advanced prediction logic (basic example here)
-            const yearsFromNow = Math.floor(Math.random() * 20) + 5; // random future year
-            const futureAge = age + yearsFromNow;
-            const achievements = [
-                `CEO of a leading ${profession} company`,
-                `publishing a groundbreaking book`,
-                `developing a life-changing innovation`,
-                `leading a successful team in ${profession}`,
-                `winning a prestigious award in ${profession}`,
-                `launching a viral app used worldwide`,
-            ];
-            const lifeEvent = achievements[Math.floor(Math.random() * achievements.length)];
-            const wealthStatus = ["a millionaire", "well-respected in society", "a philanthropist"];
-
-            // Constructing the prediction
-            const prediction = `
-                Hello, ${name}! In ${yearsFromNow} years, at the age of ${futureAge}, you will be
-                ${lifeEvent}. You are expected to be ${wealthStatus[Math.floor(Math.random() * wealthStatus.length)]}.
-                Keep working hard, and your journey will bring you unexpected surprises!
-            `;
-
-            // Display result
-            document.getElementById('result').innerText = prediction;
-        }
-    </script>
 </body>
 </html>
