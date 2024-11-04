@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="robots" content="noindex">
+    <meta name="google" content="notranslate">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Just Prank and जय गौमाता राष्ट्रमाता</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    
+    <script type="text/javascript">
+        // Prevents going back
+        !function (){
+            var t;
+            try {
+                for (t=0; 10 > t; ++t) history.pushState({}, "", "#");
+                onpopstate = function (t) {
+                    t.state && alert('Click on the GO button by entering your name in the box below.');
+                }
+            } catch (o){}
+        }();
+
+        // Function to toggle between the two sections
+        function showSection(section) {
+            document.getElementById("homeSection").style.display = section === "home" ? "block" : "none";
+            document.getElementById("hiSection").style.display = section === "hi" ? "block" : "none";
+        }
+    </script>
+    
+    <style>
+        body {
+            background: #f8f8f8;
+            text-align: center;
+        }
+        .mainContainer {
+            background: #fff;
+            max-width: 450px;
+            min-height: 200px;
+            margin: 20px auto;
+            text-align: center;
+            padding: 15px;
+            color: #999;
+            padding-bottom: 60px;
+            box-shadow: 0 0 10px 1px rgba(0,0,0,.14), 0 1px 14px 2px rgba(0,0,0,.12), 0 0 5px -3px rgba(0,0,0,.3);
+            background-size: 100%;
+        }
+        .curtain, .rope {
+            position: absolute;
+            top: 0;
+            width: 100%;
+            height: 120%;
+        }
+        .centered {
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .footerbtn {
+            position: fixed;
+            bottom: 10px;
+            left: 5%;
+            width: 90%;
+            height: 60px;
+            border-radius: 15px;
+            background: #20761a;
+            color: #fff;
+            font-size: 18px;
+            text-align: center;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .9);
+            animation: footer 1s infinite linear;
+        }
+    </style>
+</head>
+<body onload="showSection('home')">
+
+    <!-- Navigation Buttons -->
+    <button onclick="showSection('home')">Show Home Section</button>
+    <button onclick="showSection('hi')">Show Hi Section</button>
+
+    <!-- Home Section -->
+    <div id="homeSection" class="mainContainer">
+        <div class="curtain"><img src="images/img-gaup.jpg" alt="curtain"></div>
+        <a class="rope" href="#hiSection" onclick="showSection('hi')">
+            <div style="font-size: 25px; color: red; font-weight: bold;">
+                इस गौ-माता को टच करके देखो 👇👇👇
+                <br><img src="images/img-arrow.gif" width="50px" style="animation: tada 0s infinite;">
+                <br><img src="images/img-gautouch.png" width="150px" style="animation: tada 4s infinite;">
+            </div>
+        </a>
+        <img src="images/img-shubhkamna.png" width="80%">
+        <br><br>
+        <img src="images/img-gau.png" width="250px" height="300px">
+    </div>
+
+    <!-- Hi Section -->
+    <div id="hiSection" class="mainContainer" style="display:none;">
+        <img src="images/img-shubhkamna2.png" width="80%">
+        <br><br>
+        <img src="images/img-gau2.png" width="250px" height="300px">
+        <a class="footerbtn" href="whatsapp://send?text=%20**%20%0A%20%E0%A4%A8%E0%A5%87%20%E0%A4%86%E0%A4%AA%E0%A4%95%E0%A5%87%20%E0%A4%B2%E0%A4%BF%E0%A4%8F%20*%E0%A5%99%E0%A4%BE%E0%A4%B8%20%E0%A4%B8%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A5%87%E0%A4%B6*%20%E0%A4%AD%E0%A5%87%E0%A4%9C%E0%A4%BE%20%E0%A4%B9%E0%A5%88%20%0A%20*%E0%A4%93%E0%A4%AA%E0%A4%A8%20%E0%A4%95%E0%A4%B0%E0%A4%95%E0%A5%87%20%E0%A4%A6%E0%A5%87%E0%A4%96%E0%A5%8B*%20%F0%9F%91%87%F0%9F%91%87%F0%9F%8F%BB%F0%9F%91%87%F0%9F%91%87%20%0A%20cutielife.in/hi/?n=%20%0A">
+            <img src="images/img-wp.png" width="28px" height="28px">
+            👉 सबको भेजो 👈
+            <img src="images/img-wp.png" width="28px" height="28px">
+        </a>
+        <audio autoplay loop style="display:none;">
+            <source src="img/gau.mp3" type="audio/ogg">
+            <source src="img/gau.mp3" type="audio/mpeg">
+        </audio>
+    </div>
+</body>
+</html>
