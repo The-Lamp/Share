@@ -3,86 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Firebase Authentication</title>
-    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth.js"></script>
-    <script>
-        // Firebase config (add your Firebase config here)
-        const firebaseConfig = {
-            apiKey: "YOUR_API_KEY",
-            authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-            projectId: "YOUR_PROJECT_ID",
-            storageBucket: "YOUR_PROJECT_ID.appspot.com",
-            messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-            appId: "YOUR_APP_ID"
-        };
-        firebase.initializeApp(firebaseConfig);
-    </script>
+    <title>Future Predictor</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f0f4f8;
+            color: #333;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
+            margin: 0;
+            flex-direction: column;
         }
         .container {
-            background-color: #fff;
+            width: 100%;
+            max-width: 600px;
+            background: white;
             padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #007BFF;
+        }
+        label, input, select {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e8f4ff;
+            border-radius: 5px;
+            color: #007BFF;
         }
     </style>
 </head>
 <body>
+    <div class="container">
+        <h1>Your Future Prediction</h1>
+        <form id="predictionForm">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
 
-<div class="container">
-    <h2>Phone Authentication</h2>
-    <div id="recaptcha-container"></div>
-    <input type="text" id="phone-number" placeholder="Enter your phone number">
-    <button id="sign-in-button" onclick="sendCode()">Send Code</button>
+            <label for="age">Your Age</label>
+            <input type="number" id="age" min="1" placeholder="Enter your age" required>
 
-    <input type="text" id="verification-code" placeholder="Enter Verification Code">
-    <button onclick="verifyCode()">Verify Code</button>
-</div>
+            <label for="profession">Choose Your Profession</label>
+            <select id="profession">
+                <option value="Doctor">Doctor</option>
+                <option value="Engineer">Engineer</option>
+                <option value="Artist">Artist</option>
+                <option value="Entrepreneur">Entrepreneur</option>
+                <option value="Scientist">Scientist</option>
+                <option value="Teacher">Teacher</option>
+            </select>
 
-<script>
-    var recaptchaVerifier;
-    
-    window.onload = function() {
-        recaptchaVerifier = new firebase.auth.RecaptchaVerifier('sign-in-button', {
-            'size': 'invisible',
-            'callback': function(response) {
-                // reCAPTCHA solved
-            }
-        });
-    };
+            <button type="button" onclick="predictFuture()">Predict My Future</button>
+        </form>
+        <div class="result" id="result"></div>
+    </div>
 
-    function sendCode() {
-        const phoneNumber = document.getElementById('phone-number').value;
-        const appVerifier = recaptchaVerifier;
+    <script>
+        function predictFuture() {
+            const name = document.getElementById('name').value;
+            const age = parseInt(document.getElementById('age').value);
+            const profession = document.getElementById('profession').value;
+            
+            // Advanced prediction logic (basic example here)
+            const yearsFromNow = Math.floor(Math.random() * 20) + 5; // random future year
+            const futureAge = age + yearsFromNow;
+            const achievements = [
+                `CEO of a leading ${profession} company`,
+                `publishing a groundbreaking book`,
+                `developing a life-changing innovation`,
+                `leading a successful team in ${profession}`,
+                `winning a prestigious award in ${profession}`,
+                `launching a viral app used worldwide`,
+            ];
+            const lifeEvent = achievements[Math.floor(Math.random() * achievements.length)];
+            const wealthStatus = ["a millionaire", "well-respected in society", "a philanthropist"];
 
-        firebase.auth().signInWithPhoneNumber(phoneNumber, appVerifier)
-            .then((confirmationResult) => {
-                window.confirmationResult = confirmationResult;
-                alert('Code Sent!');
-            }).catch((error) => {
-                console.log(error);
-            });
-    }
+            // Constructing the prediction
+            const prediction = `
+                Hello, ${name}! In ${yearsFromNow} years, at the age of ${futureAge}, you will be
+                ${lifeEvent}. You are expected to be ${wealthStatus[Math.floor(Math.random() * wealthStatus.length)]}.
+                Keep working hard, and your journey will bring you unexpected surprises!
+            `;
 
-    function verifyCode() {
-        const code = document.getElementById('verification-code').value;
-        confirmationResult.confirm(code)
-            .then((result) => {
-                const user = result.user;
-                alert('Phone Authentication successful: ' + user.phoneNumber);
-            }).catch((error) => {
-                console.log(error);
-            });
-    }
-</script>
-
+            // Display result
+            document.getElementById('result').innerText = prediction;
+        }
+    </script>
 </body>
 </html>
