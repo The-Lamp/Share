@@ -222,6 +222,15 @@ border-radius: 15px;
     
 .m1{position:fixed;left:1%; width:auto;height:100%;top:1%;color:#000;}
 .m2{position:fixed;right:1%; width:auto;height:100%;top:1%;color:#000;}
+
+.third-view {
+    display: none;
+    height: 100vh;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
     </style>
 </head>
 <body>
@@ -312,20 +321,34 @@ border-radius: 15px;
         <a class="footerbtn" href="whatsapp://send?text=%20**%20%0A%20%E0%A4%A8%E0%A5%87%20%E0%A4%86%E0%A4%AA%E0%A4%95%E0%A5%87%20%E0%A4%B2%E0%A4%BF%E0%A4%8F%20*%E0%A5%99%E0%A4%BE%E0%A4%B8%20%E0%A4%B8%E0%A4%A8%E0%A5%8D%E0%A4%A6%E0%A5%87%E0%A4%B6*%20%E0%A4%AD%E0%A5%87%E0%A4%9C%E0%A4%BE%20%E0%A4%B9%E0%A5%88%20%0A%20*%E0%A4%93%E0%A4%AA%E0%A4%A8%20%E0%A4%95%E0%A4%B0%E0%A4%95%E0%A5%87%20%E0%A4%A6%E0%A5%87%E0%A4%96%E0%A5%8B*%20%F0%9F%91%87%F0%9F%91%87%F0%9F%8F%BB%F0%9F%91%87%F0%9F%91%87%20%0A%20cutielife.in/hi/?n=%20%0A"><img width="28px" height="28px" src="images/img-wp.png"><b style="font-size:16px;">👉 सबको भेजो  👈</b> <img width="28px" height="28px" src="images/img-wp.png">
         </a>
     </div>
+    
+    <!-- Third Interface (Newly Added) -->
+<div class="third-view" id="thirdView" style="display: none; background-color: white; text-align: center;">
+    <img src="path-to-your-gif.gif" alt="Loading GIF" id="thirdViewGif">
+</div>
 
     <!-- Audio -->
     <audio id="cowAudio" src="cow-audio.mp3"></audio>
 
     <script>
-        // Function to handle the cow click
-        document.getElementById("cowImage").onclick = function() {
-            // Play audio
-            document.getElementById("cowAudio").play();
+      // Get the GIF element to use its duration
+const gifElement = document.getElementById("thirdViewGif");
 
-            // Show the second view after clicking the cow
-            document.getElementById("initialView").style.display = "none";
-            document.getElementById("secondView").style.display = "block";
-        };
+// Function to handle the cow click
+document.getElementById("cowImage").onclick = function() {
+    // Play audio
+    document.getElementById("cowAudio").play();
+
+    // Show the third view instead of second view
+    document.getElementById("initialView").style.display = "none";
+    document.getElementById("thirdView").style.display = "flex";
+
+    // Wait for 3 seconds (or the duration of your GIF) then switch to the second view
+    setTimeout(function() {
+        document.getElementById("thirdView").style.display = "none";
+        document.getElementById("secondView").style.display = "block";
+    }, 3000); // Adjust 3000 to match the exact duration of your GIF in milliseconds
+};
 
         // Function to share on WhatsApp
         function shareOnWhatsApp() {
