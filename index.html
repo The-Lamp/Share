@@ -127,7 +127,15 @@
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
           }
 
-        .cow-image {
+        /* Adjusting Morning.webp */
+img[src="images/Morning.webp"] {
+    margin-top: -20px; /* Moves Morning.webp image 20px higher */
+    animation: shake 0.5s infinite; /* Keeps the shake animation */
+}
+
+/* Adjusting Kiss.gif */
+.cow-image {
+    margin-top: 10px; /* Moves the Kiss.gif a bit closer to Morning.webp */
     cursor: pointer;
     width: 100%;
     animation: floatCow 2s infinite alternate;
