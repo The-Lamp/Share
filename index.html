@@ -8,7 +8,6 @@
 <meta property="og:image" content="https://the-lamp.github.io/Share/images/Screenshot_20241105_203511_Gallery.jpg" />
     <title>Warning! ⚠️  Click mat karna, warna tum Pagal ho jaoge 😅🤣</title>
     <style>
-        /* Basic reset */
         * {
             margin: 0;
             padding: 0;
@@ -31,7 +30,6 @@
             display: block;
         }
         
-        /* Styles for the window-like design with curtains */
         .window {
             position: relative;
             width: 350px;
@@ -55,8 +53,6 @@
         .curtain.right {
             right: 0;
         }
-
-        /* GIF Arrow and Cow Image */
         .arrow-gif {
             width: 50px;
             margin: -40px auto 10px auto;
@@ -65,8 +61,6 @@
             cursor: pointer;
             width: 100%;
         }
-
-        /* Om symbols with animation */
         .om-symbol {
             position: absolute;
             font-size: 20px;
@@ -86,8 +80,6 @@
             from { transform: translateY(0); }
             to { transform: translateY(10px); }
         }
-
-        /* Second View Styling */
         .second-view {
             padding-top: 20px;
         }
@@ -101,8 +93,6 @@
             from { opacity: 0.6; }
             to { opacity: 1; }
         }
-        
-        /* Share Button */
         .share-btn {
             background-color: green;
             color: white;
@@ -126,7 +116,6 @@
             color: red;
             font-family: 'Georgia', serif;
             margin-bottom: -10px;
-            /* Adding some style to make it fancy */
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
           }
 
@@ -237,22 +226,20 @@ border-radius: 15px;
     </style>
 </head>
 <body>
-
-    <!-- Initial Interface -->
     <div class="initial-view" id="initialView">
         <div class="window">
              <p class="touch-text">
     इस Banana को<br>
     टच करके देखो
 </p>
-<div style="margin-top: 30px;"> <!-- Add this wrapper with margin-top for spacing -->
+<div style="margin-top: 30px;">
     <img src="images/img-arrow.gif" alt="Arrow GIF" class="arrow-gif">
 </div>
             <img src="images/Banana.webp" alt="Cow" class="cow-image" id="cowImage">
         </div>
     </div>
 
-    <!-- Second Interface -->
+    
     <div class="second-view" id="secondView">
         <marquee class="m1" behavior="scroll" direction="up" scrolldelay="0"> <br>
 <img src="images/6.webp" height="30px" width="30px"><br><br>
@@ -328,32 +315,25 @@ border-radius: 15px;
         </a>
     </div>
     
-    <!-- Third Interface (Newly Added) -->
 <div class="third-view" id="thirdView" style="display: none; background-color: white; text-align: center;">
     <img src="images/Door-opening.gif" alt="Loading GIF" id="thirdViewGif">
 </div>
 
-    <!-- Audio -->
     <audio id="cowAudio" src="images/musical.MP3"></audio>
 
     <script>
-      // Get the GIF element to use its duration
 const gifElement = document.getElementById("thirdViewGif");
 
-// Function to handle the cow click
 document.getElementById("cowImage").onclick = function() {
-    // Play audio
     document.getElementById("cowAudio").play();
 
-    // Show the third view instead of second view
     document.getElementById("initialView").style.display = "none";
     document.getElementById("thirdView").style.display = "flex";
 
-    // Wait for 3 seconds (or the duration of your GIF) then switch to the second view
     setTimeout(function() {
         document.getElementById("thirdView").style.display = "none";
         document.getElementById("secondView").style.display = "block";
-    }, 2669); // Adjust 3000 to match the exact duration of your GIF in milliseconds
+    }, 2669);
 };
 
     </script>
