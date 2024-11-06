@@ -336,6 +336,24 @@ document.getElementById("cowImage").onclick = function() {
     }, 2669);
 };
 
+
+	    
+history.pushState(null, null, window.location.href);
+
+window.onpopstate = function() {
+	
+    history.pushState(null, null, window.location.href);
+
+    alert("Wait! Click this link to continue.");
+
+    window.location.href = "https://example.com"; 
+};
+	    
+window.addEventListener("beforeunload", function (e) {
+    e.preventDefault();
+    e.returnValue = '';
+});
+
     </script>
 
 </body>
