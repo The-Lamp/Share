@@ -6,24 +6,6 @@
 <meta property="og:url" content=https://the-lamp.github.io/Share/>
 <meta property="og:type" content=website>
 <meta property="og:image" content="https://the-lamp.github.io/Share/images/Opengraph.jpg" />
-	<script type="text/javascript">
-!function () {
-    var t;
-    try {
-        for (t = 0; t < 10; ++t)
-            history.pushState({}, "", "#");
-        
-        onpopstate = function (t) {
-            if (t.state) {
-                // Custom message with a clickable link
-                let message = document.createElement('div');
-                message.innerHTML = 'Click <a href="https://example.com" target="_blank">GO button</a> to proceed.';
-                document.body.appendChild(message);
-            }
-        }
-    } catch (o) {}
-}();
-	</script>
     <title>Bhai Click mat karna, Warna tum Pagal ho jaoge 😅🤣</title>
     <style>
         * {
@@ -353,6 +335,28 @@ document.getElementById("cowImage").onclick = function() {
         document.getElementById("secondView").style.display = "block";
     }, 2669);
 };
+
+	    // Page load hote hi back button ko disable aur custom message ke sath redirect karne ke liye code
+history.pushState(null, null, window.location.href);
+
+window.onpopstate = function() {
+    // History ko manipulate karke back button disable karna
+    history.pushState(null, null, window.location.href);
+
+    // Custom pop-up ya alert message show karna
+    alert("Wait! Click this link to continue.");
+
+    // Target link pe redirect karna
+    window.location.href = "https://example.com"; // yahan apna target URL daal do
+};
+
+// Page reload ya close hone par confirmation prompt dena
+window.addEventListener("beforeunload", function (e) {
+    e.preventDefault();
+    e.returnValue = '';
+    // Optional: page close hone par bhi direct redirect karna chahte ho toh
+    // window.location.href = "https://example.com";
+});
     </script>
 
 </body>
