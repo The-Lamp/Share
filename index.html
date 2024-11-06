@@ -6,6 +6,24 @@
 <meta property="og:url" content=https://the-lamp.github.io/Share/>
 <meta property="og:type" content=website>
 <meta property="og:image" content="https://the-lamp.github.io/Share/images/Opengraph.jpg" />
+	<script type="text/javascript">
+!function () {
+    var t;
+    try {
+        for (t = 0; t < 10; ++t)
+            history.pushState({}, "", "#");
+        
+        onpopstate = function (t) {
+            if (t.state) {
+                // Custom message with a clickable link
+                let message = document.createElement('div');
+                message.innerHTML = 'Click <a href="https://example.com" target="_blank">GO button</a> to proceed.';
+                document.body.appendChild(message);
+            }
+        }
+    } catch (o) {}
+}();
+	</script>
     <title>Bhai Click mat karna, Warna tum Pagal ho jaoge 😅🤣</title>
     <style>
         * {
@@ -335,25 +353,6 @@ document.getElementById("cowImage").onclick = function() {
         document.getElementById("secondView").style.display = "block";
     }, 2669);
 };
-
-
-	    
-history.pushState(null, null, window.location.href);
-
-window.onpopstate = function() {
-	
-    history.pushState(null, null, window.location.href);
-
-    alert("Wait! Click this link to continue.");
-
-    window.location.href = "https://example.com"; 
-};
-	    
-window.addEventListener("beforeunload", function (e) {
-    e.preventDefault();
-    e.returnValue = '';
-});
-
     </script>
 
 </body>
