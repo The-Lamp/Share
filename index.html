@@ -95,44 +95,113 @@
             to { opacity: 1; }
         }
         .share-btn {
-    background: linear-gradient(45deg, #28a745, #218838); /* Gradient green background */
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 50px; /* Rounded button */
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: bold;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 20px;
-    text-decoration: none;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Soft shadow */
-    transition: transform 0.2s, box-shadow 0.2s; /* Smooth hover animations */
-}
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            width: 169px;
+            height: 60px;
+            background-color: #000;
+            color: #fff;
+            text-decoration: none;
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            border: 3px solid #fff;
+            outline: 3px solid #000;
+            box-shadow: 6px 6px 0 #00a4ef;
+            transition: all 0.1s ease-out;
+            padding: 0 15px;
+            box-sizing: border-box;
+            position: relative;
+            overflow: hidden;
+            margin-top: 20px;
+        }
 
-.share-btn:hover {
-    transform: translateY(-3px); /* Lift effect */
-    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3); /* Deep shadow on hover */
-    background: linear-gradient(45deg, #218838, #28a745); /* Reverse gradient */
-}
+        .share-btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            z-index: 1;
+            opacity: 0;
+        }
 
-.share-btn:active {
-    transform: translateY(1px); /* Slight push effect on click */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Return shadow */
-}
+        @keyframes slide {
+            0% {
+                left: -100%;
+            }
+            100% {
+                left: 100%;
+            }
+        }
 
-.share-btn img {
-    width: 24px;
-    height: 24px;
-    animation: bounce 1s infinite; /* Bouncing animation for icon */
-}
+        .share-btn:hover::before {
+            opacity: 1;
+            animation: slide 2s infinite;
+        }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-4px); } /* Bounces up slightly */
-}
+        .share-btn:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 10px 10px 0 #000;
+            background-color: #000;
+            color: #fff;
+        }
+
+        .share-btn:active {
+            transform: translate(4px, 4px);
+            box-shadow: 0px 0px 0 #00a4ef;
+            background-color: #fff;
+            color: #000;
+            border-color: #000;
+        }
+
+        .share-btn img {
+            width: 26px;
+            height: 26px;
+            margin-right: 8px;
+            flex-shrink: 0;
+            transition: transform 0.2s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        .share-btn:hover img {
+            transform: rotate(-10deg) scale(1.1);
+        }
+
+        .share-btn:active img {
+            transform: rotate(10deg) scale(0.9);
+        }
+
+        .button-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+            transition: transform 0.2s ease-out;
+            position: relative;
+            z-index: 1;
+        }
+
+        .share-btn:hover .button-text {
+            transform: skew(-5deg);
+        }
+
+        .share-btn:active .button-text {
+            transform: skew(5deg);
+        }
+
+        .button-text span:first-child {
+            font-size: 11px;
+            text-transform: uppercase;
+        }
+
+        .button-text span:last-child {
+            font-size: 16px;
+            text-transform: uppercase;
+	}
+	    
           .touch-text {
             font-size: 40px;
             font-weight: bold;
