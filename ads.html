@@ -305,14 +305,12 @@
     <button class="share-button" onclick="shareWebsite()">Apne dost ko share karo 📤</button>
 
      <script>
-        // Check if preloaded content exists in sessionStorage
         const preloadedContent = sessionStorage.getItem('classPage');
         if (preloadedContent) {
             document.body.innerHTML = preloadedContent;
             console.log('Loaded class.html content from sessionStorage');
         } else {
             console.log('Loading...');
-            // Normal loading process if sessionStorage is empty
         }
      </script>
 </body>
