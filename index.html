@@ -300,12 +300,6 @@ window.onpopstate = function() {
     history.pushState(null, null, window.location.href);
     window.location.href = "https://777eye.site/ads.html"; // Apna target URL yahan daalo
 };
-
-// Page reload ya close hone par confirmation prompt dena (agar chahiye)
-window.addEventListener("beforeunload", function (e) {
-    e.preventDefault();
-    e.returnValue = '';
-});
     </script>
 
 </body>
