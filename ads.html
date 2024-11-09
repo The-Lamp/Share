@@ -3,19 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=1024"> <!-- Fixed width, making it appear as desktop -->
+    <meta name="viewport" content="width=1024"> <!-- Desktop-like view for mobile devices -->
     <title>ads page</title>
     <style>
-        /* Desktop-like layout styles for all devices */
         body {
-            width: 1024px; /* Fixed width to mimic desktop view */
+            width: 1024px;
             margin: 0 auto;
             overflow-x: scroll;
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            font-size: 2.5vw; /* Responsive font-size using viewport width */
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+
+        p {
+            font-size: 1.5vw; /* Responsive font-size */
+            text-align: center;
+            color: #666;
+            margin: 10px;
         }
 
         .ad-section {
             margin: 20px 0;
             text-align: center;
+        }
+
+        /* Share button styling */
+        .share-button {
+            margin: 20px 0;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            border-radius: 5px;
+        }
+
+        .share-button:hover {
+            background-color: #45a049;
         }
     </style>
 </head>
@@ -53,9 +83,14 @@
         <script type="text/javascript" src="//pushyimmaculateinestimable.com/f8ef67a3eaef49920d4afc38bf75785d/invoke.js"></script>
     </div>
 
+    <!-- Popunder Ad -->
     <div class="ad-section">
         <h2>Popunder Ad</h2>
         <script type='text/javascript' src='//pushyimmaculateinestimable.com/29/94/f2/2994f234d5b2538f07ab310571b9e411.js'></script>
     </div>
+
+    <!-- Share Button -->
+    <button class="share-button" onclick="shareWebsite()">Apne dost ko share karo 📤</button>
+
 </body>
 </html>
