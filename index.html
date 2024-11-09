@@ -94,113 +94,84 @@
             from { opacity: 0.6; }
             to { opacity: 1; }
         }
-        .share-btn {
-            display: flex;
-            align-items: center;
-            cursor: pointer;
-            width: 169px;
-            height: 60px;
-            background-color: #000;
-            color: #fff;
-            text-decoration: none;
-            font-family: Arial, sans-serif;
-            font-weight: bold;
-            border: 3px solid #fff;
-            outline: 3px solid #000;
-            box-shadow: 6px 6px 0 #00a4ef;
-            transition: all 0.1s ease-out;
-            padding: 0 15px;
-            box-sizing: border-box;
-            position: relative;
-            overflow: hidden;
-            margin-top: 20px;
+         :root {
+            --text-color: hsla(210, 50%, 85%, 1);
+            --shadow-color: hsla(210, 40%, 52%, .4);
+            --btn-color: hsl(210, 80%, 42%);
+            --bg-color: #141218;
         }
 
-        .share-btn::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: -100%;
+        * {
+            box-sizing: border-box;
+        }
+
+        html, body {
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
-            z-index: 1;
-            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--bg-color);
         }
 
-        @keyframes slide {
-            0% {
-                left: -100%;
-            }
-            100% {
-                left: 100%;
-            }
+        .share-btn {
+            position: relative;
+            padding: 10px 20px;
+            border: none;
+            background: none;
+            cursor: pointer;
+            font-family: "Source Code Pro";
+            font-weight: 900;
+            text-transform: uppercase;
+            font-size: 30px;
+            color: var(--text-color);
+            background-color: var(--btn-color);
+            box-shadow: var(--shadow-color) 2px 2px 22px;
+            border-radius: 4px;
+            z-index: 0;
+            overflow: hidden;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            animation: buttonLoop 4s linear infinite;
         }
 
-        .share-btn:hover::before {
-            opacity: 1;
-            animation: slide 2s infinite;
-        }
-
-        .share-btn:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 10px 10px 0 #000;
-            background-color: #000;
-            color: #fff;
-        }
-
-        .share-btn:active {
-            transform: translate(4px, 4px);
-            box-shadow: 0px 0px 0 #00a4ef;
-            background-color: #fff;
-            color: #000;
-            border-color: #000;
+        @keyframes buttonLoop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         .share-btn img {
             width: 26px;
             height: 26px;
-            margin-right: 8px;
-            flex-shrink: 0;
-            transition: transform 0.2s ease-out;
-            position: relative;
-            z-index: 1;
+            margin-right: 10px;
         }
 
-        .share-btn:hover img {
-            transform: rotate(-10deg) scale(1.1);
+        .share-btn::before {
+            content: '';
+            pointer-events: none;
+            opacity: .6;
+            background:
+                radial-gradient(circle at 20% 35%, transparent 0, transparent 2px, var(--text-color) 3px, var(--text-color) 4px, transparent 4px),
+                radial-gradient(circle at 75% 44%, transparent 0, transparent 2px, var(--text-color) 3px, var(--text-color) 4px, transparent 4px),
+                radial-gradient(circle at 46% 52%, transparent 0, transparent 4px, var(--text-color) 5px, var(--text-color) 6px, transparent 6px);
+            width: 100%;
+            height: 300%;
+            top: 0;
+            left: 0;
+            position: absolute;
+            animation: bubbles 5s linear infinite both;
         }
 
-        .share-btn:active img {
-            transform: rotate(10deg) scale(0.9);
+        @keyframes bubbles {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-66.666%);
+            }
         }
-
-        .button-text {
-            display: flex;
-            flex-direction: column;
-            line-height: 1.2;
-            transition: transform 0.2s ease-out;
-            position: relative;
-            z-index: 1;
-        }
-
-        .share-btn:hover .button-text {
-            transform: skew(-5deg);
-        }
-
-        .share-btn:active .button-text {
-            transform: skew(5deg);
-        }
-
-        .button-text span:first-child {
-            font-size: 11px;
-            text-transform: uppercase;
-        }
-
-        .button-text span:last-child {
-            font-size: 16px;
-            text-transform: uppercase;
-	}
 	    
           .touch-text {
             font-size: 40px;
