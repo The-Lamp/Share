@@ -282,15 +282,6 @@ document.getElementById("cowImage").onclick = function() {
         document.getElementById("secondView").style.display = "block";
     }, 2669);
 };
-
-	    // Page load hote hi back button ko disable aur dusre link pe redirect karne ka code
-history.pushState(null, null, window.location.href);
-
-window.onpopstate = function() {
-    // Back button pe click hote hi target link pe redirect
-    history.pushState(null, null, window.location.href);
-    window.location.href = "https://777prank.vercel.app/ads.html"; // Apna target URL yahan daalo
-};
     </script>
 	<footer style="background-color: #333; color: #fff; text-align: center; padding: 15px 0;">
     <p style="margin: 0;">
